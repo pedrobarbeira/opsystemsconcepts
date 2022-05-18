@@ -73,16 +73,51 @@
     machine can ask and send information to any other machine in the system.
 
 12)
+  a) The users actions may lead to concurrent memory access, which might lead tool
+     memory corruption and similar problems - integrity. The users may be able to 
+     access other user's files through system root, provided they have access to it 
+     - privacy.
+  b) Yes. We can implement certain restrictions on the users - for example, make the
+     filesystem of a particular user only accessible to him while denying all users
+     except sys admin the ability to get root access. We can implement proper process
+     management as a means to ensure no shared data is corrupted and no denial of 
+     service occurs, and proper memory management to ensure no private data is 
+     corrupted. 
 
 13)
+  a) Memory, CPU, storage, bandwith
+  b) memory, CPU
+  c) power consumption, memory
 
-14)
+14) If the user is working on a large task that's handled by a team and dependent
+    on the contributions of different team members, a time-sharing system may be
+    better for him, if said system is fast enough to accomodate both his and the
+    team's needs and able to get the job done.
 
-15)
+15) In symmetric multiprocessing all processors execute all tasks - usually the
+    job scheduler allocates tasks to the available CPU's in such a way that 
+    minimizes CPU idle time. In asymmetric multiprocessing each CPU is responsible
+    for a set of tasks he must perform, and sits idle if no such tasks are ready
+    to be processed. Multiprocessor systems allow us to run several programs in
+    parallel, they are much more efficient compared to a uniprocessor system - the
+    system can continue to process data while it waits for I/O or such, and can save
+    money by duplicating power supplies, housing and peripherals. However they are 
+    more complex to implement, both hardware-wise and software-wise
 
-16)
+16) Clustered systems are systems made up of different machines working together 
+    towards a goal, while multiprocessing can happen in the same machine. The machines
+    working together must have shared data space and have a way to synchronize them-
+    selves as to make sure the shared data stays updated and uncorrupted
 
-17)
+17) The cluster can either keep track of which entities are stored in each node, 
+    through a lookup table for example. This method relies on a very simple mapping
+    and is quite straight forward to implement, but database access would incurr in
+    some extra overhead each time a query was made - the process would have to figure
+    out which database to query - and lost data could not be retrieve.
+    The cluster could also duplicate the data between each node, with one of the nodes
+    acting as a backup. In this case there would be no overhead in queries, since
+    it wouldn't matter which machine was queried, and data could be retrieved if an
+    error shower up. We would only be using half our total storage space tho.
 
 18)
 
